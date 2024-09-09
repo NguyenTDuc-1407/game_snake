@@ -1,0 +1,15 @@
+C:\Users\ASUS\Desktop\New folder\game_snake\bin\Debug\net7.0\game_snake.exe
+C:\Users\ASUS\Desktop\New folder\game_snake\bin\Debug\net7.0\game_snake.deps.json
+C:\Users\ASUS\Desktop\New folder\game_snake\bin\Debug\net7.0\game_snake.runtimeconfig.json
+C:\Users\ASUS\Desktop\New folder\game_snake\bin\Debug\net7.0\game_snake.dll
+C:\Users\ASUS\Desktop\New folder\game_snake\bin\Debug\net7.0\game_snake.pdb
+C:\Users\ASUS\Desktop\New folder\game_snake\obj\Debug\net7.0\game_snake.csproj.AssemblyReference.cache
+C:\Users\ASUS\Desktop\New folder\game_snake\obj\Debug\net7.0\game_snake.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\Desktop\New folder\game_snake\obj\Debug\net7.0\game_snake.AssemblyInfoInputs.cache
+C:\Users\ASUS\Desktop\New folder\game_snake\obj\Debug\net7.0\game_snake.AssemblyInfo.cs
+C:\Users\ASUS\Desktop\New folder\game_snake\obj\Debug\net7.0\game_snake.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\Desktop\New folder\game_snake\obj\Debug\net7.0\game_snake.dll
+C:\Users\ASUS\Desktop\New folder\game_snake\obj\Debug\net7.0\refint\game_snake.dll
+C:\Users\ASUS\Desktop\New folder\game_snake\obj\Debug\net7.0\game_snake.pdb
+C:\Users\ASUS\Desktop\New folder\game_snake\obj\Debug\net7.0\game_snake.genruntimeconfig.cache
+C:\Users\ASUS\Desktop\New folder\game_snake\obj\Debug\net7.0\ref\game_snake.dll
