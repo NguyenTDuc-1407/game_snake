@@ -2,22 +2,33 @@
 {
     public static void Main(string[] args)
     {
-        Thread _game = new Thread(SnakeControl.ListenKey);
+        SnakeControl snakeControl = new SnakeControl();
+        Thread _game = new Thread(snakeControl.ListenKey);
         _game.Start();
         do
         {
-            Console.Clear();
-            SnakeControl.Drawboard();
-            SnakeControl.setUpBoard();
-            SnakeControl.MoveSnakeHead();
-            SnakeControl.EatFood();
-            SnakeControl.SpawnBody();
-            SnakeControl.PopUpfood();
-            SnakeControl.ShowPoint();
+            snakeControl.Drawboard();
+            snakeControl.setUpBoard();
+            snakeControl.MoveSnakeHead();
+            snakeControl.EatFood();
+            snakeControl.SpawnBody();
+            snakeControl.PopUpfood();
+            snakeControl.ShowPoint();
+            snakeControl.savePoint();
             // cài đặt time di chuyển
-            Task.Delay(SnakeControl.speed).Wait();
+            try
+            {
+                Task.Delay(snakeControl.speed).Wait();
+            }
+            catch (ArgumentException e)
+            {
+                
+                Console.WriteLine(e);
+                break;
+            }
+            Console.Clear();
 
-        } while (true);
+        } while (!snakeControl.endGame);
 
     }
 

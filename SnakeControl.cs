@@ -1,20 +1,21 @@
 public class SnakeControl
 {
-    public static Point food = new Point(8, 8);
-    public static bool foodExist = false;
-    public static int speed = 500;
+    public Point food = new Point(8, 8);
+    public bool foodExist = false;
+    public int speed = 500;
     public static int row = 20;
     public static int col = 40;
-    public static string direction = "Right";
-    public static int score;
-    public static Point[] body = new Point[1]
+    public string direction = "Right";
+    public int score;
+    public bool endGame = false;
+    public Point[] body = new Point[1]
     {
             new Point(4,4)
     };
-    public static Point _head = new Point(10, 10);
-    public static string[,] board = new string[row, col];
+    public Point _head = new Point(10, 10);
+    public string[,] board = new string[row, col];
     //  ve cac doi tuong tren ban do (bien, ran, moi)
-    public static void Drawboard()
+    public void Drawboard()
     {
         for (int i = 0; i < row; i++)
         {
@@ -56,7 +57,7 @@ public class SnakeControl
         }
     }
     // hien thi ra ban do
-    public static void setUpBoard()
+    public void setUpBoard()
     {
         for (int i = 0; i < row; i++)
         {
@@ -68,7 +69,7 @@ public class SnakeControl
         }
     }
     // kiem tra va cham voi cac canh cua ban do
-    public static void MoveSnakeHead()
+    public void MoveSnakeHead()
     {
         switch (direction)
         {
@@ -103,7 +104,7 @@ public class SnakeControl
         }
     }
     // doc vao phim len,xuong,trai,phai
-    public static void ListenKey()
+    public void ListenKey()
     {
         while (true)
         {
@@ -138,7 +139,7 @@ public class SnakeControl
         }
     }
     // tang size cua mang, khoi tao nut moi
-    public static void EatFood()
+    public void EatFood()
     {
         if (_head.X == food.X && _head.Y == food.Y)
         {
@@ -149,13 +150,20 @@ public class SnakeControl
             foodExist = false;
         }
     }
-    // ok
-    public static void SpawnBody()
+    // 
+    public void SpawnBody()
     {
         for (int i = body.Length - 1; i > 0; i--)
         {
             body[i].X = body[i - 1].X;
             body[i].Y = body[i - 1].Y;
+
+            if (body[i].X == _head.X && body[i].Y == _head.Y)
+            {
+                overGame();
+            }
+
+
         }
         if (body.Length > 0)
         {
@@ -163,23 +171,43 @@ public class SnakeControl
             body[0].Y = _head.Y;
         }
     }
-    public static void PopUpfood()
+    public void PopUpfood()
+    {
+        Random random = new Random();
+        int x = random.Next(1, row - 1);
+        int y = random.Next(1, col - 1);
+        if (x != _head.X && y != _head.Y)
         {
-            Random random = new Random();
-            int x = random.Next(1, row - 1);
-            int y = random.Next(1, col - 1);
-            if (x != _head.X && y != _head.Y)
+            if (foodExist == false)
             {
-                if (foodExist == false)
-                {
-                    food.X = x;
-                    food.Y = y;
-                    foodExist = true;
-                }
+                food.X = x;
+                food.Y = y;
+                foodExist = true;
             }
         }
-        public static void ShowPoint()
+    }
+    public void ShowPoint()
+    {
+        string readFile = @"C:\Users\ASUS\Desktop\New folder\game_snake\score.txt";
+        using (StreamReader streamReader = new StreamReader(readFile))
         {
-            Console.WriteLine($"Score: {score}");
+            string line = "";
+            while ((line = streamReader.ReadLine()) != null)
+            {
+                Console.WriteLine(line);
+            }
         }
+    }
+    public void savePoint()
+    {
+        string writeFile = @"C:\Users\ASUS\Desktop\New folder\game_snake\score.txt";
+        using (StreamWriter streamWriter = new StreamWriter(writeFile))
+        {
+            streamWriter.WriteLine($"Score: {score}");
+        }
+    }
+    public void overGame()
+    {
+        endGame = true;
+    }
 }
